@@ -26,6 +26,7 @@ LEFT OUTER JOIN titles AS t ON (e.emp_no = t.emp_no)
 WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
 ORDER BY e.emp_no;
 
+-- Select * from Retirement_Titles; 
 -- -------------------------------------------------------------
 
 -- ! Deliverable 2
@@ -53,6 +54,34 @@ last_name,
 title
 INTO Unique_Titles 
 FROM retirement_titles
-ORDER BY emp_no, title DESC;
+ORDER BY emp_no, to_date DESC;
+
+-- Select * from Unique_Titles; 
 
 -- -----------------------------------------------------
+-- Summary table (the number of employees by their most recent job title)
+
+-- Write another query in the Employee_Database_challenge.sql file to 
+-- retrieve the number of employees by their most recent job title who 
+-- are about to retire.
+
+-- First, retrieve the number of titles from the Unique Titles table.
+-- Then, create a Retiring Titles table to hold the required information.
+-- Group the table by title, then sort the count column in descending order.
+-- Export the Retiring Titles table as retiring_titles.csv and save it to your Data folder in the Pewlett-Hackard-Analysis folder.
+-- Before you export your table, confirm that it looks like this image:
+
+SELECT COUNT (ut.emp_no), ut.title
+INTO Retiring_Titles
+FROM unique_titles as ut
+GROUP BY title 
+ORDER BY COUNT (title) DESC;
+
+-- And to show the Retirement_Titles table:
+-- SELECT * FROM Retiring_Titles;
+
+
+
+
+
+
