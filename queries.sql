@@ -1,52 +1,53 @@
 
--- ! Employee Tables QUESRIES START FROM HERE
+-- ! QUESRIES START FROM HERE
 
--- * finding the name of employees born between 1952 and 1955 who will begin to retire
-SELECT first_name, last_name
-FROM employees
-WHERE birth_date BETWEEN '1952-01-01' AND '1955-12-31'
-;
+-- ! 7.3.1 Query Dates
 
+-- -- * finding the name of employees born between 1952 and 1955 who will begin to retire
+-- -- * Finding the retirement eligibility and those hired between 1985 to 1988 
+-- SELECT first_name, last_name
+-- FROM employees
+-- WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+-- AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31')
 
--- Let's create a query that will return each department name from the Departments table
--- as well as the employee numbers and the from- and to- dates from the dept_manager table. 
--- We'll use an inner join because we want all of the matching rows from both tables.
+-- SELECT first_name, last_name
+-- INTO retirement_info
+-- FROM employees
+-- WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+-- AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31');
 
--- * Create another query that will search for only 1952 birth dates.	
-SELECT first_name, last_name
-FROM employees
-WHERE birth_date BETWEEN '1952-01-01' AND '1952-12-31'
-;
+-- -- * To  see what the retirement_info​ table looks like we query it
+-- -- with a SELECT statement 
+-- SELECT * FROM retirement_info
+-- ;
 
-
-
--- * Finding the retirement eligibility and those hired between 1985 to 1988 
-SELECT first_name, last_name
-FROM employees
-WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
-AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31')
-;
-
-
-
--- * Number of employees retiring
-SELECT COUNT(first_name)
-FROM employees
-WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
-AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31')
-;
-
-
-
--- * To  see what the retirement_info​ table looks like we query it with a SELECT statement 
-SELECT * FROM retirement_info
-;
-
--- * To see how many records are there in thid table
-SELECT COUNT (first_name)
-FROM retirement_info
-;
+-- -- * To see how many records are there in third table
+-- SELECT COUNT (first_name)
+-- FROM retirement_info
+-- ;
  
+-- Then export the content of the table to a csv file named "retirement_info.csv":
+
+
+-- #############################################
+--
+-- ! 7.3.2 join-the-tables
+
+-- Create new table for "retiring employees" 
+-- (earlier in the 7.3.1 module this table did not have emp_no) 
+-- so we need to drop the previous table and delete its csv and recreae things again)
+-- DROP TABLE retirement_info;
+
+
+SELECT emp_no, first_name, last_name
+INTO retirement_info
+FROM employees
+WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31')
+;
+
+-- Then export the content of the table to a csv file named "retirement_info.csv"
+
 
 -- #############################################
 
@@ -73,8 +74,9 @@ LEFT JOIN dept_emp
 -- * Now we need to tell Postgres where the two tables are linked with the ON clause.
 ON retirement_info.emp_no = dept_emp.emp_no;
 
--- The result was successful and the table with the needed info of RETIRING OR RETIRED employees  
--- was created (looking at the table showed soe of them had retired years ago).
+-- The result was successful and the table with the needed info of 
+-- RETIRING OR RETIRED employees was created (looking at the table 
+-- shows some of the people had retired years ago).
 
 -- --------------------------------------------------
 
@@ -121,7 +123,7 @@ LEFT JOIN dept_emp as de
 ON ri.emp_no = de.emp_no
 WHERE de.to_date = ('9999-01-01');
 
--- Finally, because this is a table of current employees, we added a filter, 
+-- Finally, because this is a table of current employees (current_emp), we added a filter, 
 -- using the WHERE keyword and the date 9999-01-01.
 
 -- #############################################
@@ -133,39 +135,24 @@ WHERE de.to_date = ('9999-01-01');
 -- But the data output would'tbe in any particular order. 
 -- Therefor, we will add ORDER BY clause to organize the  output by the department number.
 
--- Employee count by department number
+-- SELECT ri.emp_no,
+--     ri.first_name,
+--     ri.last_name,
+-- de.to_date   
+-- FROM retirement_info as ri
+-- LEFT JOIN dept_emp as de
+-- ON ri.emp_no = de.emp_no
+-- WHERE de.to_date = ('9999-01-01')
+
 SELECT COUNT(ce.emp_no), de.dept_no
-FROM current_emp as ce
-LEFT JOIN dept_emp as de
-ON ce.emp_no = de.emp_no
-GROUP BY de.dept_no
-ORDER BY de.dept_no;
-
-
--- Export in to a "csv file"
--- NOW, Update the code block to create a new table, then export it as a CSV.
--- To export the output data into a csv file, we need to update the code bock 
--- and add "INTO at the begining of the code:
-
--- (perhaps this needs to be run again first)
-SELECT ri.emp_no,
-    ri.first_name,
-    ri.last_name,
-de.to_date
 INTO retiring_emp_by_dept
-FROM retirement_info as ri
-LEFT JOIN dept_emp as de
-ON ri.emp_no = de.emp_no
-WHERE de.to_date = ('9999-01-01')
-
-SELECT COUNT(ce.emp_no), de.dept_no
 FROM current_emp as ce
 LEFT JOIN dept_emp as de
 ON ce.emp_no = de.emp_no
 GROUP BY de.dept_no
 ORDER BY de.dept_no;
 
--- Save as csv by using the tabs
+-- Saved thw "Employee count by department number" as "retiring_emp_by_dept" by using the tabs
 
 -- ####################################
 
@@ -189,7 +176,6 @@ ORDER BY de.dept_no;
 -- SELECT * FROM salaries
 -- ORDER BY to_date DESC;
 
-
 -- * The date listed in the column is not the most recent date of employment, 
 -- * So, we'll need to pull employment dates from the dept_emp table
 
@@ -206,22 +192,21 @@ ORDER BY de.dept_no;
 --     first_name, 
 --     last_name, 
 --     gender
---! INTO retirement_info
+-- * INTO retirement_info
 -- FROM employees 
 -- WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
 -- AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31');
     
--- ! We won't want to save this query into the same table we used before. 
+-- * We won't want to save this query into the same table we used before. 
 -- Not only would it be confusing, but Postgres wouldn't allow it anyway.
 -- We'll want to update the INTO portion. The rest of the code looks good, 
 -- as we want the same filters to be in place, so leave it as-is.
 
 
--- * 1- "Employee list" with gender and salary
+-- ! 1- Employee list with gender and salary
 
 -- Then:
 SELECT e.emp_no,	e.first_name,	e.last_name,	e.gender,	s.salary,	de.to_date
-
 -- Save into a new table
 INTO emp_info
 FROM employees as e INNER JOIN salaries as s ON (e.emp_no = s.emp_no) INNER JOIN dept_emp as de	ON (e.emp_no = de.emp_no) -- Add filters
@@ -229,7 +214,7 @@ WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31') AND (e.hire_date BETW
  
  -- ===============================================
 
--- "2- List of managers" per department
+-- ! 2- List of managers" per department
 
 SELECT  dm.dept_no,
         d.dept_name,
@@ -244,10 +229,12 @@ FROM dept_manager AS dm
         ON (dm.dept_no = d.dept_no)
     INNER JOIN current_emp AS ce
         ON (dm.emp_no = ce.emp_no);
-		
+
+
 -- =================================		
 		
--- "List 3: Department Retirees"
+-- ! "List 3: Department Retirees"
+
 SELECT ce.emp_no,
 ce.first_name,
 ce.last_name,
@@ -261,42 +248,6 @@ INNER JOIN departments AS d
 ON (de.dept_no = d.dept_no);
  
 -- #################################
-
--- CHALLENGE MODULE 7
--- 	Deliverable 1
-SELECT e.emp_no, 
-e.first_name, 
-e.last_name,
-t.title, 
-t.from_date, 
-t.to_date 	
-INTO Retirement_Titles
-
-FROM employees AS e  
-
--- join on primary key
-LEFT OUTER JOIN titles AS t ON (e.emp_no = t.emp_no)   
-WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
-ORDER BY e.emp_no;
-
--- ############
-
--- Deliverable 2
-
--- Use Dictinct with Orderby to remove duplicate rows
-SELECT DISTINCT ON (emp_no) emp_no,
-first_name, 
-last_name,
-title
-INTO Unique_Titles 
-FROM retirement_titles
-ORDER BY emp_no, title DESC;
-
--- #############
-
-
-
-
 
 
 
