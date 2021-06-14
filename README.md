@@ -9,25 +9,14 @@ Using the ERD we created in this module as a reference and knowledge of SQL quer
   2- The Employees Eligible for the Mentorship Program
   3: A written report on the employee database analysis
   
-
-Deliverable 1: The Number of Retiring Employees by Title (50 points)
-Using the ERD you created in this module 
-
-
-
-
-
-
-<img src="https://github.com/BHashemi2021/Pewlett-Hackard-Analysis/blob/main/Pewlett-Hackard-Analysis/Images/EmployeeDB.png" width="506" height="900">
-
-
+To clearly see the relations between tables in SQL databases we can use Entity Relationship Diagrams or ERDs, or ER Diagram or ER model, that are a type of structural diagram used in database design. The following ERD shows the relations between the table we have created for PH Analysis.
 
 -----------------------
 ![EmployeeDB.png](https://github.com/BHashemi2021/Pewlett-Hackard-Analysis/blob/main/Pewlett-Hackard-Analysis/Images/EmployeeDB.png)
 
 -----------------------
 
-
+We created the Retirement Titles table, shown below, to hold all the titles of current employees who were born between January 1, 1952 and December 31, 1955. As it is seen, in the table some employees have multiple titles.
 
 
 -----------------------
@@ -48,7 +37,7 @@ Using the ERD you created in this module
 
 
 ----------------------
-![3-retiring_titles.png](https://github.com/BHashemi2021/Pewlett-Hackard-Analysis/blob/main/Pewlett-Hackard-Analysis/Images/3-retiring_titles.png)
+![3_retiring_titles.png](https://github.com/BHashemi2021/Pewlett-Hackard-Analysis/blob/main/Pewlett-Hackard-Analysis/Images/3_retiring_titles.png)
 
 
 
