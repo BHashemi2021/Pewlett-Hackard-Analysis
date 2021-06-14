@@ -81,6 +81,6 @@ Finally, we used the COUNT() function to create a summary table that holds the n
 
 ## Summary
 
-o	On the whole, 90,398 roles will need to be filled as the "silver tsunami" begins to make its impact. Most of the retirees will be among engineers in general (45397 or 50.2%) and senior engineers in particular (29414 or 32.5%)
+*	On the whole, 90,398 roles will need to be filled as the "silver tsunami" begins to make its impact. Most of the retirees will be among engineers in general (45397 or 50.2%) and senior engineers in particular (29414 or 32.5%)
 
-o	There seems to be enough retirement ready staff to mentor the next generation of employees as this wave of retirement will go on for the next few years until all those born between 1946-1964 or baby boomers will retire. 
+*	There seems to be enough retirement ready staff to mentor the next generation of employees as this wave of retirement will go on for the next few years until all those born between 1946-1964 or baby boomers will retire. 
