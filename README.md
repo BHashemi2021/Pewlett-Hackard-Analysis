@@ -1,4 +1,4 @@
-# Pewlett-Hackard-Analysis
+# Pewlett Hackard Analysis
 
 ## Background
 Pewlett Hackard is a large long-established company with many employees. Baby boomers who have been born between the years 1946-1964 are 57-75 years now and consequently many are in the retirement age. Their retirement has even been likened to a grey tsunami and Pewlett Hackard is no exception among other large organizations that will have to be prepare a contingency plan to manage a prevailing human resource disaster. As a result, we have been tasked to prepare a list of those who are retiring soon.
