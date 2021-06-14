@@ -27,7 +27,7 @@ We need to get some information about the employees who are about to retire from
 #### Figure 2: Left Outer Join on Employees and Titles Tables
 
 ------------------------
-![]()
+![Left-outer-join.png](https://github.com/BHashemi2021/Pewlett-Hackard-Analysis/blob/main/Pewlett-Hackard-Analysis/Images/Left-outer-join.png)
 
 ------------------------
 
