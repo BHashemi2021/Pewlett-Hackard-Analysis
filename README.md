@@ -22,7 +22,7 @@ To clearly see the relations between tables in SQL databases we can use Entity R
 -----------------------
 
 
-We need to get some information about the employees who are about to retire from Employee and Titles tables. The best way to retrieve the information would be an outer left join between these two tables as shown in Figure 2 below.
+We need to get some information about the employees who are about to retire from Employee and Titles tables. The best way to retrieve the information we need would be an outer left join between these two tables as shown in Figure 2 below.
 
 #### Figure 2: Left Outer Join on Employees and Titles Tables
 
