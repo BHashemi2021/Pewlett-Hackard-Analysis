@@ -43,7 +43,7 @@ Because some employees have multiple titles in the database, e.g. due to promoti
 ----------------------
 
 
-Finally, we used the COUNT() function to create a summary table that holds the number of retirement-age employees by most recent job title, as shown below.
+Finally, we used the COUNT() function to create a summary table that holds the number of retirement-age employees (90,398 employees) by most recent job title, as shown below.
 
 
 ----------------------
