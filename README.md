@@ -73,10 +73,10 @@ Finally, we used the COUNT() function to create a summary table that holds the n
 
 ## Results 
 
-1- In Pewlett Hackard Company 90,398 employees will retire soon .
-2- The highest employee numbers who will retire are senior engineers and the second most are senior staff.
-3- Engineer also comprise a noticeable number of employees who wil retire.
-4- Managers are the lowest number of employees who will retire (Figure 5).
+* In Pewlett Hackard Company 90,398 employees will retire soon .
+* The highest employee numbers who will retire are senior engineers and the second most are senior staff.
+* Engineer also comprise a noticeable number of employees who wil retire.
+* Managers are the lowest number of employees who will retire (Figure 5).
 
 
 ## Summary
