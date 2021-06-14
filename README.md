@@ -18,7 +18,7 @@ Using the ERD you created in this module
 
 
 
-
+<img src="https://github.com/BHashemi2021/Pewlett-Hackard-Analysis/blob/main/Pewlett-Hackard-Analysis/Images/EmployeeDB.png" width="506" height="900">
 
 
 
